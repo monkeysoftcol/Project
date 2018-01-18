@@ -124,13 +124,8 @@ function baseController($scope) {
             $scope.listMenuGlobal =  $scope.listMenuAdmin;
         }
         
-        $scope.listAnticipos.add($scope.anticipo);
-        $scope.listLegalizacion.add($scope.legalizar);
-    };
-
-
-    $scope.usuario = function () {
-
+        $scope.listAnticipos.push($scope.anticipo);
+        $scope.listLegalizacion.push($scope.legalizar);
     };
 }
 
@@ -170,4 +165,6 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
         $scope.appName();
 
     }]);
+
+
 
