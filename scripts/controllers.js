@@ -56,9 +56,81 @@ function baseController($scope) {
     $scope.appName = function () {
         $scope.appName = "Anticipos y Gestión Contable";
     };
+
+    $scope.user = {
+        "name": "Sandra",
+        "user": "sandra",
+        "pass": "test1",
+        "email": "sandra@campolimpio.com",
+        "ndoc": "111111",
+        "role": "USER"
+    };
+
+    $scope.user2 = {
+        "name": "Administrador",
+        "user": "administrador",
+        "pass": "test2",
+        "email": "admin@campolimpio.com",
+        "ndoc": "123789",
+        "role": "ADMIN"
+    };
+
+    $scope.userGlobal = {};
+    $scope.listMenuGlobal = [];
+
+    $scope.listMenuUser = [
+        {"titulo": "Anticipos", "url": "#Anticipos", "new":"true","submenu":"null"},
+        {"titulo": "Legalizacion", "url": "#Legalizar", "new":"false","submenu":"null"},
+        {"titulo": "Consolidado", "url": "#MiConsolidado", "new":"false","submenu":"null"},
+        {"titulo": "Perfil", "url": "#MiPerfil", "new":"false","submenu":"null"}
+    ];
+
+    $scope.listMenuAdmin = [
+        {"titulo": "Ver Anticipos", "url": "#VerAnticipos", "new":"true","submenu":"null"},
+        {"titulo": "Aprobar Legalizacion", "url": "#AprobarLegalizar", "new":"true","submenu":"null"},
+        {"titulo": "Ver Consolidados", "url": "#Consolidado", "new":"true","submenu":"null"},
+        {"titulo": "Perfil", "url": "#MiPerfil", "new":"true","submenu":"null"}
+    ];
+
+    //REGISTRADO, APROBADO, ANULADO, RECHAZO, PAGADO, POR_LEGALIZAR
+    $scope.anticipo={
+        "id":"null",
+        "fecha":"fecha",
+        "monto":"12555",
+        "estadop":"REGISTRADO", 
+        "user":$scope.userGlobal,
+        "justificacion":"Prueba",
+        "soportes":"[]",
+        "semana":"1"
+    };
     
-    $scope.usuario = function (){
+    $scope.legalizar={
+        "monto":"111",
+        "fecha":"",
+        "anticipo":$scope.anticipo,
+        "mensaje":"observacion del administrador"
+    };
+    
+    $scope.listAnticipos=[];
+    $scope.listLegalizacion=[];
+    
+    $scope.cambiarUsuario = function (tipo) {
         
+        if (tipo === 1) {
+            $scope.userGlobal = $scope.user;
+            $scope.listMenuGlobal =$scope.listMenuUser;
+        } else {
+            $scope.userGlobal = $scope.user2;
+            $scope.listMenuGlobal =  $scope.listMenuAdmin;
+        }
+        
+        $scope.listAnticipos.add($scope.anticipo);
+        $scope.listLegalizacion.add($scope.legalizar);
+    };
+
+
+    $scope.usuario = function () {
+
     };
 }
 
