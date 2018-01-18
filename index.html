@@ -35,12 +35,12 @@
         <![endif]-->
 
         <!-- Header -->
-        <div id="header">
+        <div id="header" ng-controller="defaultCtrl">
             <div class="color-line">
             </div>
             <div id="logo" class="light-version">
                 <span>
-                    Campo Limpio
+                    {{appName}}
                 </span>
             </div>
             <nav role="navigation">
@@ -514,6 +514,7 @@
 <script src="scripts/lib/angular-route.min.js"></script>
 <script src="scripts/lib/fileinput.min.js" type="text/javascript"></script>
 <script src="scripts/app.js"></script> 
+<script src="scripts/defaultController.js"></script>
 <script src="scripts/controllers.js"></script>
 
 <script src="scripts/lib/dirPagination.js"></script>

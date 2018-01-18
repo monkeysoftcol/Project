@@ -52,7 +52,16 @@ function baseController($scope) {
             window.location.href = './login.html#/login';
         }
     };
+
+    $scope.appName = function () {
+        $scope.appName = "Anticipos y Gestión Contable";
+    };
+    
+    $scope.usuario = function (){
+        
+    };
 }
+
 module.controller('InfoUserCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.dataUser = {};
         $scope.infoUser = {};
@@ -62,7 +71,7 @@ module.controller('InfoUserCtrl', ['$scope', '$http', function ($scope, $http) {
 
 module.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador home cargado!!!!");
-        
+
         baseController($scope);
         //baseController($scope);
         $scope.cancel = function () {
@@ -85,7 +94,8 @@ module.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
 
 module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador AnticiposCtrl cargado!!!!");
-        
-        
+        baseController($scope);
+        $scope.appName();
+
     }]);
 
