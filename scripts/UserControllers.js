@@ -136,19 +136,33 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
     }]);
 module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador AnticiposCtrl cargado!!!!");
+        $scope.datosFormulario = {};
         baseController($scope);
         $scope.appName();
+        $scope.totalAsignadoAno = '20000000';
+        $scope.montoGastado = '10000000';
+        $scope.montoRestante = '10000000';
         
-        $scope.totalAsignado = function (){
-            $scope.totalAsignado = '20000000';
-        };
+        $scope.conceptos = conceptos;
         
-        $scope.totalGastado = function (){
-            $scope.totalGastado = '10000000';
-        };
-        
-        $scope.totalRestante = function (){
-            $scope.totalRestante = '10000000';
+        function conceptos (){
+            $scope.errores = {};
+            var error = false;
+            if (!$scope.datosFormulario.concepto) {
+                error = true;
+                $scope.errores.concepto = 'Campo obligatorio';
+            }
+            if(!$scope.datosFormulario.valor){
+                error = true;
+                $scope.errores.valor = 'Campo obligatorio';
+            }
+            if(!$scope.datosFormulario.observacion){
+                error = true;
+                $scope.errores.observacion = 'Campo obligatorio';
+            }
+            if(error){
+                return (error);
+            }
         };
         
 }]);
