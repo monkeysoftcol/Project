@@ -73,6 +73,14 @@ module.controller('ConsolidaAllCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.consolidado5 = {"usuario": $scope.userApp5, "total": "85000000", "detalle": $scope.listAnticipos5,"sede":"Sede 4"};
         $scope.listConsolidado.push($scope.consolidado5);
 
+        $scope.verDetalleConsolidado = function(row){
+            console.log(JSON.stringify(row));
+            $('#modalTitulo').html('Detalle Consolidado');
+            $('#modalTituloDecripcion').html('Información del consolidado');
+            //$('#modalTituloContenido').html(JSON.stringify(row));
+            //$('#dlgProccesing').modal();
+            $('#dlgdatail').modal();
+        };
 
     }]);
 

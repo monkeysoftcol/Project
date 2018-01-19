@@ -1,3 +1,9 @@
+<style>
+    .modal-backdrop{
+        z-index: -1;
+    }
+</style>
+
 <div class="row">
     <div class="col-lg-12 text-center m-t-md">
         <h2>
@@ -23,19 +29,50 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="consolidado in listConsolidado">
-                                <td>{{$index+1}}</td>
+                                <td>{{$index + 1}}</td>
                                 <td>{{consolidado.usuario.name}}</td>
                                 <td>{{consolidado.total|currency}}</td>
                                 <td>{{consolidado.sede}}</td>
                                 <td>
                                     <div align="CENTER">
-                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true">Ver detalle</span>
+                                        <button type="button" class="btn w-xs btn-success" ng-click="verDetalleConsolidado(consolidado)"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver detalle</button>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+
+                <div class="modal fade" id="dlgdatail" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="color-line"></div>
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title"><span id="modalTitulo"> </span></h4>
+                                <small class="font-bold"><span id="modalTituloDecripcion"> </span></small>
+                            </div>
+                            <div class="modal-body">
+                                <span id="modalTituloContenido"> </span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--<button type="button" class="btn w-xs btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver detalle</button>
+                <button type="button" class="btn w-xs btn-primary">Primary</button>
+                <button type="button" class="btn w-xs btn-primary2">Primary2</button>
+                <button type="button" class="btn w-xs btn-info">Info</button>
+                <button type="button" class="btn w-xs btn-success">Success</button>
+                <button type="button" class="btn w-xs btn-warning">Warning</button>
+                <button type="button" class="btn w-xs btn-warning2">Warning2</button>
+                <button type="button" class="btn w-xs btn-danger">Danger</button>
+                <button type="button" class="btn w-xs btn-danger2">Danger2</button>
+                <button type="button" class="btn w-xs btn-link">Simple link</button>-->
             </div>
         </div>
     </div>
