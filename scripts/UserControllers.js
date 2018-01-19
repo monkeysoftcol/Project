@@ -70,14 +70,14 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
-            "legalizado": "1"
+            "legalizado": "2"
         };
         
         $scope.legalizado4 = {
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
-            "legalizado": "1"
+            "legalizado": "2"
         };
         
         $scope.legalizado5 = {
@@ -91,7 +91,7 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
-            "legalizado": "1"
+            "legalizado": "2"
         };
         
         $scope.listadoLegalizado.push($scope.legalizado1);
@@ -132,5 +132,18 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.ultimosMontosAprobados.push($scope.montoAprobado4);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado5);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado6);
+        
+        $scope.totalAsignado = function (){
+            $scope.totalAsignado = "20000000";
+        };
+        
+        $scope.totalGastado = function (){
+            $scope.totalGastado = "10000000";
+        };
+        
+        $scope.totalRestante = function (){
+            $scope.totalRestante = "10000000";
+        };
+        
     }]);
 

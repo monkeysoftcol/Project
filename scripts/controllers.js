@@ -21,9 +21,9 @@ var dataUser;
  * @company MonkeySoft
  */
 function baseController($scope) {
-    $.getJSON('./webresources/parametrosServices/infoUser', function (data) {
-        console.log(data);
-    });
+//    $.getJSON('./webresources/parametrosServices/infoUser', function (data) {
+//        console.log(data);
+//    });
 
     $scope.msjExito = function (mensaje) {
         new PNotify({
@@ -129,12 +129,12 @@ function baseController($scope) {
     };
 }
 
-module.controller('InfoUserCtrl', ['$scope', '$http', function ($scope, $http) {
-        $scope.dataUser = {};
-        $scope.infoUser = {};
-        $scope.listMenu = [];
-        baseController($scope);
-    }]);
+//module.controller('InfoUserCtrl', ['$scope', '$http', function ($scope, $http) {
+//        $scope.dataUser = {};
+//        $scope.infoUser = {};
+//        $scope.listMenu = [];
+//        baseController($scope);
+//    }]);
 
 module.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador home cargado!!!!");

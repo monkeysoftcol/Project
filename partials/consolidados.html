@@ -30,12 +30,12 @@
                                 <td>{{datoTabla.fechaRegistro}}</td>
                                 <td>{{datoTabla.estado}}</td>
                                 <td>
-                                    <div ng-show="datoTabla.fechaAprobacion === null"></div>
-                                    <div ng-show="datoTabla.fechaAprobacion !== null">{{datoTabla.fechaAprobacion}}</div>
+                                    <div ng-show="datoTabla.fechaAprobacion === 'null'"></div>
+                                    <div ng-show="datoTabla.fechaAprobacion !== 'null'">{{datoTabla.fechaAprobacion}}</div>
                                 </td>
                                 <td>
-                                    <div ng-show="datoTabla.observacion === null"></div>
-                                    <div ng-show="datoTabla.observacion !== null">{{datoTabla.observacion}}</div>
+                                    <div ng-show="datoTabla.observacion === 'null'"></div>
+                                    <div ng-show="datoTabla.observacion !== 'null'">{{datoTabla.observacion}}</div>
                                 </td>
                                 <td>
                                     <div align="CENTER">
@@ -159,8 +159,12 @@
                                 <td><strong>{{datoTabla.monto}}</strong></td>
                                 <td>{{datoTabla.fechaRegistro}}</td>
                                 <td>
-                                    <div ng-show="datoTabla.legalizado === 1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-                                    <div ng-show="datoTabla.legalizado === 2"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+                                    <div ng-show="datoTabla.legalizado === '1'" align="CENTER">
+                                        <span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </div>
+                                    <div ng-show="datoTabla.legalizado === '2'" align="CENTER">
+                                        <span style="color:#62cb31" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
