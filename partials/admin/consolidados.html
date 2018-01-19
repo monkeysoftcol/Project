@@ -1,0 +1,191 @@
+<div class="row">
+    <div class="col-lg-12 text-center m-t-md">
+        <h2>
+            Consolidado General
+        </h2>
+    </div>
+</div>
+</br>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="hpanel">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id.</th>
+                                <th>Usuario</th>
+                                <th>Total</th>
+                                <th>Sede</th>
+                                <th>Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="consolidado in listConsolidado">
+                                <td>{{$index+1}}</td>
+                                <td>{{consolidado.usuario.name}}</td>
+                                <td>{{consolidado.total|currency}}</td>
+                                <td>{{consolidado.sede}}</td>
+                                <td>
+                                    <div align="CENTER">
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true">Ver detalle</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="hpanel stats">
+            <div class="panel-body list">
+                <div class="stats-title pull-left">
+                    <h4>Montos Asignados 2017</h4>
+                </div>
+                <div class="stats-icon pull-right">
+                    <i class="pe-7s-science fa-4x"></i>
+                </div>
+                <br><br>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 185.000.000</h3>
+
+                        <div class="font-bold">Enero<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 250.000.000</h3>
+
+                        <div class="font-bold">Febrero<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 85.000.000</h3>
+
+                        <div class="font-bold">Marzo<i class="fa fa-level-up"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 25.000.000</h3>
+
+                        <div class="font-bold">Abril<i class="fa fa-level-up"></i></div>
+                    </div>
+
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 48.568.000</h3>
+
+                        <div class="font-bold">Mayo<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 52.000.000</h3>
+
+                        <div class="font-bold">Junio<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 46.785.500</h3>
+
+                        <div class="font-bold">Julio<i class="fa fa-level-up"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 35.252.636</h3>
+
+                        <div class="font-bold">Agosto<i class="fa fa-level-up"></i></div>
+                    </div>
+
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 25.689.560</h3>
+
+                        <div class="font-bold">Septiembre<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 78.252.100</h3>
+
+                        <div class="font-bold">Octubre<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 26.478.566</h3>
+
+                        <div class="font-bold">Noviembre<i class="fa fa-level-up"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 32.222.000</h3>
+
+                        <div class="font-bold">Diciembre<i class="fa fa-level-up"></i></div>
+                    </div>
+
+                </div>
+            </div>   
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="hpanel">
+            <div class="panel-body list">
+                <div class="table-responsive project-list">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+
+                                <th>Proyecto</th>
+                                <th>Monto</th>
+                                <th>Fecha</th>
+                                <th>Legalizado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="datoTabla in listadoLegalizado">
+                                <td>{{datoTabla.proyecto}}</td>
+                                <td><strong>{{datoTabla.monto}}</strong></td>
+                                <td>{{datoTabla.fechaRegistro}}</td>
+                                <td>
+                                    <div ng-show="datoTabla.legalizado === 1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                                    <div ng-show="datoTabla.legalizado === 2"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="hpanel">
+            <div class="panel-body list">
+
+                <div class="pull-right">
+                    <a href="#" class="btn btn-xs btn-default">Ver más</a>
+                </div>
+                <div class="panel-title">Últimos montos aprobados</div>
+                <div class="list-item-container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Monto</th>
+                                <th>Fecha Aprobación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="datoTabla in ultimosMontosAprobados">
+                                <td>{{datoTabla.monto}}</td>
+                                <td>{{datoTabla.fechaAprobado}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
