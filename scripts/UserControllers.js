@@ -3,6 +3,8 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         baseController($scope);
         $scope.appName();
         $scope.consolidado = [];
+        $scope.listadoLegalizado = [];
+        $scope.ultimosMontosAprobados = [];
         //REGISTRADO, APROBADO, ANULADO, RECHAZO, PAGADO, POR_LEGALIZAR
         $scope.datosTabla1 = {
             "id": "1",
@@ -50,5 +52,85 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.consolidado.push($scope.datosTabla4);
         $scope.consolidado.push($scope.datosTabla5);
         
+        $scope.legalizado1 = {
+            "proyecto": "datos del proyecto",
+            "monto": "20000",
+            "fechaRegistro": "10/01/2018",
+            "legalizado": "1"
+        };
+        
+        $scope.legalizado2 = {
+            "proyecto": "datos del proyecto",
+            "monto": "20000",
+            "fechaRegistro": "10/01/2018",
+            "legalizado": "1"
+        };
+        
+        $scope.legalizado3 = {
+            "proyecto": "datos del proyecto",
+            "monto": "20000",
+            "fechaRegistro": "10/01/2018",
+            "legalizado": "1"
+        };
+        
+        $scope.legalizado4 = {
+            "proyecto": "datos del proyecto",
+            "monto": "20000",
+            "fechaRegistro": "10/01/2018",
+            "legalizado": "1"
+        };
+        
+        $scope.legalizado5 = {
+            "proyecto": "datos del proyecto",
+            "monto": "20000",
+            "fechaRegistro": "10/01/2018",
+            "legalizado": "1"
+        };
+        
+        $scope.legalizado6 = {
+            "proyecto": "datos del proyecto",
+            "monto": "20000",
+            "fechaRegistro": "10/01/2018",
+            "legalizado": "1"
+        };
+        
+        $scope.listadoLegalizado.push($scope.legalizado1);
+        $scope.listadoLegalizado.push($scope.legalizado2);
+        $scope.listadoLegalizado.push($scope.legalizado3);
+        $scope.listadoLegalizado.push($scope.legalizado4);
+        $scope.listadoLegalizado.push($scope.legalizado5);
+        $scope.listadoLegalizado.push($scope.legalizado6);
+        
+        $scope.montoAprobado1 = {
+            "monto": "20000",
+            "fechaAprobado": "10/01/2018"
+        };
+        $scope.montoAprobado2 = {
+            "monto": "20000",
+            "fechaAprobado": "10/01/2018"
+        };
+        $scope.montoAprobado3 = {
+            "monto": "20000",
+            "fechaAprobado": "10/01/2018"
+        };
+        $scope.montoAprobado4 = {
+            "monto": "20000",
+            "fechaAprobado": "10/01/2018"
+        };
+        $scope.montoAprobado5 = {
+            "monto": "20000",
+            "fechaAprobado": "10/01/2018"
+        };
+        $scope.montoAprobado6 = {
+            "monto": "20000",
+            "fechaAprobado": "10/01/2018"
+        };
+        
+        $scope.ultimosMontosAprobados.push($scope.montoAprobado1);
+        $scope.ultimosMontosAprobados.push($scope.montoAprobado2);
+        $scope.ultimosMontosAprobados.push($scope.montoAprobado3);
+        $scope.ultimosMontosAprobados.push($scope.montoAprobado4);
+        $scope.ultimosMontosAprobados.push($scope.montoAprobado5);
+        $scope.ultimosMontosAprobados.push($scope.montoAprobado6);
     }]);
 

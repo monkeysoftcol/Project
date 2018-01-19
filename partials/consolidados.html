@@ -65,24 +65,24 @@
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold text-success">300,102</h3>
 
-                        <div class="font-bold">98% <i class="fa fa-level-up text-success"></i></div>
+                        <div class="font-bold">Enero<i class="fa fa-level-up text-success"></i></div>
                     </div>
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold text-success">280,200</h3>
 
-                        <div class="font-bold">98% <i class="fa fa-level-up text-success"></i></div>
+                        <div class="font-bold">Febrero<i class="fa fa-level-up text-success"></i></div>
                     </div>
                 </div>
                 <div class="row m-t-md">
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold ">120,108</h3>
 
-                        <div class="font-bold">38% <i class="fa fa-level-down"></i></div>
+                        <div class="font-bold">Marzo<i class="fa fa-level-up"></i></div>
                     </div>
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold ">450,600</h3>
 
-                        <div class="font-bold">28% <i class="fa fa-level-down"></i></div>
+                        <div class="font-bold">Abril<i class="fa fa-level-up"></i></div>
                     </div>
 
                 </div>
@@ -90,24 +90,24 @@
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold text-success">300,102</h3>
 
-                        <div class="font-bold">98% <i class="fa fa-level-up text-success"></i></div>
+                        <div class="font-bold">Mayo<i class="fa fa-level-up text-success"></i></div>
                     </div>
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold text-success">280,200</h3>
 
-                        <div class="font-bold">98% <i class="fa fa-level-up text-success"></i></div>
+                        <div class="font-bold">Junio<i class="fa fa-level-up text-success"></i></div>
                     </div>
                 </div>
                 <div class="row m-t-md">
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold ">120,108</h3>
 
-                        <div class="font-bold">38% <i class="fa fa-level-down"></i></div>
+                        <div class="font-bold">Julio<i class="fa fa-level-up"></i></div>
                     </div>
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold ">450,600</h3>
 
-                        <div class="font-bold">28% <i class="fa fa-level-down"></i></div>
+                        <div class="font-bold">Agosto<i class="fa fa-level-up"></i></div>
                     </div>
 
                 </div>
@@ -115,31 +115,28 @@
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold text-success">300,102</h3>
 
-                        <div class="font-bold">98% <i class="fa fa-level-up text-success"></i></div>
+                        <div class="font-bold">Septiembre<i class="fa fa-level-up text-success"></i></div>
                     </div>
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold text-success">280,200</h3>
 
-                        <div class="font-bold">98% <i class="fa fa-level-up text-success"></i></div>
+                        <div class="font-bold">Octubre<i class="fa fa-level-up text-success"></i></div>
                     </div>
                 </div>
                 <div class="row m-t-md">
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold ">120,108</h3>
 
-                        <div class="font-bold">38% <i class="fa fa-level-down"></i></div>
+                        <div class="font-bold">Noviembre<i class="fa fa-level-up"></i></div>
                     </div>
                     <div class="col-lg-6">
                         <h3 class="no-margins font-extra-bold ">450,600</h3>
 
-                        <div class="font-bold">28% <i class="fa fa-level-down"></i></div>
+                        <div class="font-bold">Diciembre<i class="fa fa-level-up"></i></div>
                     </div>
 
                 </div>
-            </div>
-            <div class="panel-footer">
-                This is standard panel footer
-            </div>
+            </div>   
         </div>
     </div>
     <div class="col-lg-6">
@@ -150,65 +147,21 @@
                         <thead>
                             <tr>
 
-                                <th colspan="2">Project</th>
-                                <th>Completed</th>
-                                <th>Task</th>
-                                <th>Date</th>
-                                <th>Action</th>
+                                <th>Proyecto</th>
+                                <th>Monto</th>
+                                <th>Fecha</th>
+                                <th>Legalizado</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input type="checkbox" class="i-checks" checked></td>
-                                <td>Contract with Zender Company
-                                    <br/>
-                                    <small><i class="fa fa-clock-o"></i> Created 14.08.2015</small>
-                                </td>
+                            <tr ng-repeat="datoTabla in listadoLegalizado">
+                                <td>{{datoTabla.proyecto}}</td>
+                                <td><strong>{{datoTabla.monto}}</strong></td>
+                                <td>{{datoTabla.fechaRegistro}}</td>
                                 <td>
-                                    <span class="pie">1/5</span>
+                                    <div ng-show="datoTabla.legalizado === 1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                                    <div ng-show="datoTabla.legalizado === 2"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
                                 </td>
-                                <td><strong>20%</strong></td>
-                                <td>Jul 14, 2013</td>
-                                <td><a href="#"><i class="fa fa-check text-success"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="i-checks"></td>
-                                <td>There are many variations of passages
-                                    <br/>
-                                    <small><i class="fa fa-clock-o"></i> Created 21.07.2015</small>
-                                </td>
-                                <td>
-                                    <span class="pie">1/4</span>
-                                </td>
-                                <td><strong>40%</strong></td>
-                                <td>Jul 16, 2013</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="i-checks" checked></td>
-                                <td>Contrary to popular belief
-                                    <br/>
-                                    <small><i class="fa fa-clock-o"></i> Created 12.06.2015</small>
-                                </td>
-                                <td>
-                                    <span class="pie">0.52/1.561</span>
-                                </td>
-                                <td><strong>75%</strong></td>
-                                <td>Jul 18, 2013</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="i-checks"></td>
-                                <td>Gamma project
-                                    <br/>
-                                    <small><i class="fa fa-clock-o"></i> Created 06.03.2015</small>
-                                </td>
-                                <td>
-                                    <span class="pie">226/360</span>
-                                </td>
-                                <td><strong>16%</strong></td>
-                                <td>Jul 22, 2013</td>
-                                <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -221,35 +174,28 @@
             <div class="panel-body list">
 
                 <div class="pull-right">
-                    <a href="#" class="btn btn-xs btn-default">Today</a>
-                    <a href="#" class="btn btn-xs btn-default">Month</a>
+                    <a href="#" class="btn btn-xs btn-default">Ver más</a>
                 </div>
-                <div class="panel-title">Last Activity</div>
-                <small class="fo">This is simple example</small>
+                <div class="panel-title">Últimos montos aprobados</div>
                 <div class="list-item-container">
-                    <div class="list-item">
-                        <h3 class="no-margins font-extra-bold text-success">2,773</h3>
-                        <small>Tota Messages Sent</small>
-                        <div class="pull-right font-bold">98% <i class="fa fa-level-up text-success"></i></div>
-                    </div>
-                    <div class="list-item">
-                        <h3 class="no-margins font-extra-bold text-color3">4,422</h3>
-                        <small>Last activity</small>
-                        <div class="pull-right font-bold">13% <i class="fa fa-level-down text-color3"></i></div>
-                    </div>
-                    <div class="list-item">
-                        <h3 class="no-margins font-extra-bold text-color3">9,180</h3>
-                        <small>Monthly income</small>
-                        <div class="pull-right font-bold">22% <i class="fa fa-bolt text-color3"></i></div>
-                    </div>
-                    <div class="list-item">
-                        <h3 class="no-margins font-extra-bold text-success">1,450</h3>
-                        <small>Tota Messages Sent</small>
-                        <div class="pull-right font-bold">44% <i class="fa fa-level-up text-success"></i></div>
-                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Monto</th>
+                                <th>Fecha Aprobación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="datoTabla in ultimosMontosAprobados">
+                                <td>{{datoTabla.monto}}</td>
+                                <td>{{datoTabla.fechaAprobado}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
             </div>
+
         </div>
     </div>
+</div>
 </div>
