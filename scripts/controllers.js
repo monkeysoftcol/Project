@@ -159,12 +159,3 @@ module.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
 
 
 
-module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) {
-        console.log("Controlador AnticiposCtrl cargado!!!!");
-        baseController($scope);
-        $scope.appName();
-
-    }]);
-
-
-

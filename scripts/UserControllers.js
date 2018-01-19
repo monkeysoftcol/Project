@@ -133,17 +133,22 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.ultimosMontosAprobados.push($scope.montoAprobado5);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado6);
         
+    }]);
+module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) {
+        console.log("Controlador AnticiposCtrl cargado!!!!");
+        baseController($scope);
+        $scope.appName();
+        
         $scope.totalAsignado = function (){
-            $scope.totalAsignado = "20000000";
+            $scope.totalAsignado = '20000000';
         };
         
         $scope.totalGastado = function (){
-            $scope.totalGastado = "10000000";
+            $scope.totalGastado = '10000000';
         };
         
         $scope.totalRestante = function (){
-            $scope.totalRestante = "10000000";
+            $scope.totalRestante = '10000000';
         };
         
-    }]);
-
+}]);
