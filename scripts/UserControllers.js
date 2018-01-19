@@ -51,56 +51,56 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.consolidado.push($scope.datosTabla3);
         $scope.consolidado.push($scope.datosTabla4);
         $scope.consolidado.push($scope.datosTabla5);
-        
+
         $scope.legalizado1 = {
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
             "legalizado": "1"
         };
-        
+
         $scope.legalizado2 = {
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
             "legalizado": "1"
         };
-        
+
         $scope.legalizado3 = {
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
             "legalizado": "2"
         };
-        
+
         $scope.legalizado4 = {
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
             "legalizado": "2"
         };
-        
+
         $scope.legalizado5 = {
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
             "legalizado": "1"
         };
-        
+
         $scope.legalizado6 = {
             "proyecto": "datos del proyecto",
             "monto": "20000",
             "fechaRegistro": "10/01/2018",
             "legalizado": "2"
         };
-        
+
         $scope.listadoLegalizado.push($scope.legalizado1);
         $scope.listadoLegalizado.push($scope.legalizado2);
         $scope.listadoLegalizado.push($scope.legalizado3);
         $scope.listadoLegalizado.push($scope.legalizado4);
         $scope.listadoLegalizado.push($scope.legalizado5);
         $scope.listadoLegalizado.push($scope.legalizado6);
-        
+
         $scope.montoAprobado1 = {
             "monto": "20000",
             "fechaAprobado": "10/01/2018"
@@ -125,44 +125,60 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
             "monto": "20000",
             "fechaAprobado": "10/01/2018"
         };
-        
+
         $scope.ultimosMontosAprobados.push($scope.montoAprobado1);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado2);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado3);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado4);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado5);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado6);
-        
+
     }]);
 module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador AnticiposCtrl cargado!!!!");
         $scope.datosFormulario = {};
+        $scope.newsoporte = {};
         baseController($scope);
         $scope.appName();
         $scope.totalAsignadoAno = '20000000';
         $scope.montoGastado = '10000000';
         $scope.montoRestante = '10000000';
-        
+
         $scope.conceptos = conceptos;
-        
-        function conceptos (){
+        $scope.mostrarMensaje = mostrarMensaje;
+
+        function mostrarMensaje(row) {
+            console.log(JSON.stringify(row));
+            $('#modalTitulo').html('Detalle Consolidado');
+            $('#modalTituloDecripcion').html('Información del consolidado');
+            $('#modalTituloContenido').html(JSON.stringify(row));
+            $('#myModal').modal();
+        }
+        ;
+
+        function conceptos() {
             $scope.errores = {};
             var error = false;
             if (!$scope.datosFormulario.concepto) {
                 error = true;
                 $scope.errores.concepto = 'Campo obligatorio';
             }
-            if(!$scope.datosFormulario.valor){
+            if (!$scope.datosFormulario.valor) {
                 error = true;
                 $scope.errores.valor = 'Campo obligatorio';
             }
-            if(!$scope.datosFormulario.observacion){
+            if (!$scope.datosFormulario.observacion) {
                 error = true;
                 $scope.errores.observacion = 'Campo obligatorio';
             }
-            if(error){
-                return (error);
+            if (!error) {
+                $scope.newsoporte.concepto = $scope.datosFormulario.concepto;
+                $scope.newsoporte.valor = $scope.datosFormulario.valor;
+                $scope.newsoporte.observacion = $scope.datosFormulario.observacion;
+                $scope.mostrarMensaje($scope.newsoporte);
             }
-        };
-        
-}]);
+            ;
+        }
+        ;
+
+    }]);
