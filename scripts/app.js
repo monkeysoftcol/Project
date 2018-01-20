@@ -10,7 +10,7 @@ module.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/Anticipos', {templateUrl: 'partials/anticipos.html', controller: 'AnticiposCtrl'});
         $routeProvider.when('/MiConsolidado', {templateUrl: 'partials/consolidados.html', controller: 'ConsolidadosCtrl'});
-        
+        $routeProvider.when('/Legalizar', {templateUrl: 'partials/legalizacion.html', controller: 'LegalizacionUserCtrl'});
         //admin
         $routeProvider.when('/Consolidado', {templateUrl: 'partials/admin/consolidados.html', controller: 'ConsolidaAllCtrl'});
         

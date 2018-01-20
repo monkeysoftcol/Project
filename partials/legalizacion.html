@@ -1,16 +1,118 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<script type="text/javascript">
+    // http://duckranger.com/2012/06/pretty-file-input-field-in-bootstrap/ 
+    // Cuando se pulsa el falso manda el click al autentico
+    $('.btn-file').on('click', function () {
+        $(this).parent().prev().click();
+    });
+    // Cuando el autentico cambia hace cambiar al falso
+    $('input[type=file]').on('change', function (e) {
+        $(this).next().find('input').val($(this).val());
+    });
+</script>
+<div class="row">
+    <div class="col-lg-12 text-center m-t-md">
+        <h2>
+            LEGALIZACION 
+        </h2>
+    </div>
+</div>
+</br>
+<div class="row" ng-show="verTabla">
+    <div class="col-lg-12">
+        <div class="hpanel">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id.</th>
+                                <th>Monto</th>
+                                <th>Fecha Solicitud</th>
+                                <th>Concepto</th>
+                                <th>Legalizado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="datoTabla in datosTabla">
+                                <td>{{datoTabla.id}}</td>
+                                <td>{{datoTabla.monto|currency}}</td>
+                                <td>{{datoTabla.fechaRegistro}}</td>
+                                <td>
+                                    <div ng-show="datoTabla.observacion === 'null'"></div>
+                                    <div ng-show="datoTabla.observacion !== 'null'">{{datoTabla.observacion}}</div>
+                                </td>
+                                <td>
+                                    <div align="CENTER">
+                                        <div ng-show="datoTabla.legalizado === '1'">
+                                            <button class="btn btn-danger btn-sm" type="button" ng-click="legalizar(datoTabla.legalizado)"><i class="fa fa-check-circle"></i> <span class="bold">Legalizar</span></button>
+                                        </div>
+                                        <div ng-show="datoTabla.legalizado === '2'">
+                                            <button class="btn btn-success btn-sm" type="button" ng-click="legalizar(datoTabla.legalizado)"><i class="fa fa-check-circle"></i> <span class="bold">Legalizar</span></button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-show="verFormulario">
+    <div class="col-md-12">
+        <div class="hpanel">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <h3>Resumen</h3><br>
+                        <label>Id </label><br>
+                        <label>Monto: </label><br>
+                        <label>Fecha de Registro: </label><br>
+                        <label>Concepto: </label>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label>Comentario</label>
+                        <textarea 
+                            class="form-control" 
+                            ng-model="datosFormulario.observacion" 
+                            placeholder="Ingrese el comentario.."
+                            rows="8">    
+                        </textarea> 
+                    </div>
+                </div>
+                <label class="control-label" for="fichero1">Añadir archivo</label>
+                <div class="controls">
+                    <input id="fichero1" type="file" style="display:none" name="fichero1">
+                    <div class="input-append">
+                        <input id="falso1" class="input-xlarge" type="text">
+                        <a class="btn btn-file btn-success"><i class="fa fa-folder-open-o"></i> Seleccionar</a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-success" ng-click="mostrarTabla()">Regresar</button>
+                    <button class="btn btn-success" ng-click="legalizado()">Legalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="legaDlg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title"><span id="modalTitulo"> </span></h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <span id="modalTituloContenido"> </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="mostrarTabla()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -233,3 +233,100 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
         ;
 
     }]);
+
+module.controller('LegalizacionUserCtrl', ['$scope', '$http', function ($scope, $http) {
+        console.log("Controlador LegalizacionUserCtrl cargado!!!!");
+        baseController($scope);
+        $scope.appName();
+        $scope.datosTabla = [];
+        $scope.verFormulario = false;
+        $scope.verTabla = true;
+        $scope.datosFormulario = {};
+        $scope.newsoporte = {};
+        //Funciones
+        $scope.legalizar = legalizar;
+        $scope.mostrarMensaje = mostrarMensaje;
+        $scope.mostrarFormulario = mostrarFormulario;
+        $scope.mostrarTabla = mostrarTabla;
+        $scope.legalizado = legalizado;
+
+        $scope.dato1 = {
+            "id": "1",
+            "monto": "1000000",
+            "fechaRegistro": "01/11/2017",
+            "observacion": "COMPRA DE MATERIALES",
+            "legalizado": "1"
+        };
+        $scope.dato2 = {
+            "id": "2",
+            "monto": "5000000",
+            "fechaRegistro": "20/11/2017",
+            "observacion": "COMPRA DE MATERIALES",
+            "legalizado": "2"
+        };
+        $scope.dato3 = {
+            "id": "3",
+            "monto": "1500000",
+            "fechaRegistro": "01/12/2017",
+            "observacion": "COMPRA DE MATERIALES",
+            "legalizado": "1"
+        };
+        $scope.dato4 = {
+            "id": "4",
+            "monto": "8000000",
+            "fechaRegistro": "20/12/2017",
+            "observacion": "COMPRA DE MATERIALES",
+            "legalizado": "2"
+        };
+        $scope.dato5 = {
+            "id": "5",
+            "monto": "100000",
+            "fechaRegistro": "01/01/2018",
+            "observacion": "COMPRA DE MATERIALES",
+            "legalizado": "1"
+        };
+
+        $scope.datosTabla.push($scope.dato1);
+        $scope.datosTabla.push($scope.dato2);
+        $scope.datosTabla.push($scope.dato3);
+        $scope.datosTabla.push($scope.dato4);
+        $scope.datosTabla.push($scope.dato5);
+
+        function legalizar(id) {
+            if (id !== "1") {
+                $scope.mostrarMensaje();
+            } else {
+                $scope.newsoporte = $scope.datosTabla;
+                $scope.mostrarFormulario($scope.newsoporte);
+            }
+        }
+        ;
+
+        function  mostrarFormulario(datos) {
+            $scope.verFormulario = true;
+            $scope.verTabla = false;
+        }
+        ;
+
+        function mostrarTabla() {
+            $scope.verFormulario = false;
+            $scope.verTabla = true;
+
+        }
+        ;
+        
+        function legalizado (){
+            $('#modalTitulo').html('Información');
+            $('#modalTituloContenido').html('El registro ha sido legalizado');
+            $('#legaDlg').modal();
+        };
+
+        function mostrarMensaje() {
+            $('#modalTitulo').html('Legalización');
+            $('#modalTituloContenido').html("El registro ya fue legalizado");
+            $('#legaDlg').modal();
+        }
+        ;
+    }]);
+
+        
