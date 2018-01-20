@@ -140,12 +140,18 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
         $scope.newsoporte = {};
         baseController($scope);
         $scope.appName();
+        $scope.verSolicitud = false;
+        $scope.verFormulario = true;
         $scope.totalAsignadoAno = '20000000';
         $scope.montoGastado = '10000000';
         $scope.montoRestante = '10000000';
+        $scope.datosTabla = [];
 
         $scope.conceptos = conceptos;
         $scope.mostrarMensaje = mostrarMensaje;
+        $scope.mostrarTabla = mostrarTabla;
+        $scope.mostrarFormulario = mostrarFormulario;
+        $scope.registrarDato = registrarDato;
 
         function mostrarMensaje(row) {
             console.log(JSON.stringify(row));
@@ -155,6 +161,30 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
             $('#myModal').modal();
         }
         ;
+
+        $scope.datos1 = {
+            "id": "1",
+            "monto": "1000000",
+            "concepto": "COMPRA",
+            "fechaSolicitud": "20/01/2018",
+            "estado": "Registrado",
+            "legalizado": "1",
+            "observacion": "Solicitud para la compra de ..."
+        };
+
+        $scope.datos2 = {
+            "id": "2",
+            "monto": "newsoporte.datosFormulario.valor",
+            "concepto": "newsoporte.datosFormulario.concepto",
+            "fechaSolicitud": new Date(),
+            "estado": "Registrado",
+            "legalizado": "1",
+            "observacion": "newsoporte.datosFormulario.observacion"
+        };
+
+
+        $scope.datosTabla.push($scope.datos1);
+        $scope.datosTabla.push($scope.datos2);
 
         function conceptos() {
             $scope.errores = {};
@@ -178,6 +208,27 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
                 $scope.mostrarMensaje($scope.newsoporte);
             }
             ;
+        }
+        ;
+
+        function registrarDato() {
+            $scope.newsoporte.concepto = $scope.datosFormulario.concepto;
+            $scope.newsoporte.valor = $scope.datosFormulario.valor;
+            $scope.newsoporte.observacion = $scope.datosFormulario.observacion;
+            $scope.mostrarTabla($scope.newsoporte);
+        }
+        ;
+
+        function mostrarTabla(newsoporte) {
+            $scope.verSolicitud = true;
+            $scope.verFormulario = false;
+            $scope.datos2(newsoporte);
+        }
+        ;
+
+        function mostrarFormulario() {
+            $scope.verSolicitud = false;
+            $scope.verFormulario = true;
         }
         ;
 

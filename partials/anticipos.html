@@ -43,7 +43,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row" ng-show="verFormulario">
     <div class="col-md-12">
         <div class="text-center m-b-md">
             <h3>Registrar Anticipo</h3>
@@ -111,8 +111,51 @@
                 <span id="modalTituloContenido"> </span>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="registrarDato()">Cerrar</button>
             </div>
+        </div>
+    </div>
+</div>
+<div class="row" ng-show="verSolicitud">
+    <div class="col-lg-12">
+        <div class="hpanel">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id.</th>
+                                <th>Monto</th>
+                                <th>Fecha Solicitud</th>
+                                <th>Concepto</th>
+                                <th>Estado</th>
+                                <th>Legalizado</th>
+                                <th>Observación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="datoTabla in datosTabla">
+                                <td>{{datoTabla.id}}</td>
+                                <td>{{datoTabla.monto|currency}}</td>
+                                <td>{{datoTabla.concepto}}</td>
+                                <td>{{datoTabla.fechaSolicitud| date:'dd/MM/yyyy'}}</td>
+                                <td>{{datoTabla.estado}}</td>
+                                <td>
+                                    <div ng-show="datoTabla.legalizado === '1'" align="CENTER">
+                                        <span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </div>
+                                    <div ng-show="datoTabla.legalizado === '2'" align="CENTER">
+                                        <span style="color:#62cb31" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </div>
+                                </td>
+                                <td>{{datoTabla.observacion}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-success " type="button" ng-click="mostrarFormulario()"><span class="bold">Regresar</span></button>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
