@@ -9,15 +9,15 @@ module.controller('ConsolidaAllCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.userApp5 = {"name": "Maria Paula Dominguez", "user": "mdominguez", "pass": "test1", "email": "mdominguez@campolimpio.com", "ndoc": "161616", "role": "USER"};
 
         $scope.listConsolidado = [];
-        
-        $scope.soporte1={"id":"1", "nombre":"factura 1.pdf"};
-        $scope.soporte2={"id":"2", "nombre":"Cotización proyecto.doc"};
-        $scope.soporte3={"id":"3", "nombre":"Tabla de gastos.xls"};
-        $scope.listSoportes =[];
+
+        $scope.soporte1 = {"id": "1", "nombre": "factura 1.pdf"};
+        $scope.soporte2 = {"id": "2", "nombre": "Cotización proyecto.doc"};
+        $scope.soporte3 = {"id": "3", "nombre": "Tabla de gastos.xls"};
+        $scope.listSoportes = [];
         $scope.listSoportes.push($scope.soporte1);
         $scope.listSoportes.push($scope.soporte2);
         $scope.listSoportes.push($scope.soporte3);
-        
+
         //datos prueba user1
         $scope.anticipo1 = {"id": "111", "fecha": "02/01/2017", "monto": "25000", "estadop": "PAGADO", "user": $scope.userApp1, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "1"};
         $scope.anticipo2 = {"id": "222", "fecha": "09/01/2017", "monto": "3500000", "estadop": "APROBADO", "user": $scope.userApp1, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "2"};
@@ -26,9 +26,9 @@ module.controller('ConsolidaAllCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.listAnticipos1.push($scope.anticipo1);
         $scope.listAnticipos1.push($scope.anticipo2);
         $scope.listAnticipos1.push($scope.anticipo3);
-        $scope.consolidado1 = {"usuario": $scope.userApp1, "total": "11420000", "detalle": $scope.listAnticipos1,"sede":"Sede 1"};
+        $scope.consolidado1 = {"usuario": $scope.userApp1, "total": "11420000", "detalle": $scope.listAnticipos1, "sede": "Sede 1"};
         $scope.listConsolidado.push($scope.consolidado1);
-        
+
         //datos prueba user2
         $scope.anticipo4 = {"id": "444", "fecha": "02/01/2017", "monto": "1000000", "estadop": "PAGADO", "user": $scope.userApp2, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "1"};
         $scope.anticipo5 = {"id": "555", "fecha": "09/01/2017", "monto": "3500000", "estadop": "PAGADO", "user": $scope.userApp2, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "2"};
@@ -37,10 +37,10 @@ module.controller('ConsolidaAllCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.listAnticipos2.push($scope.anticipo4);
         $scope.listAnticipos2.push($scope.anticipo5);
         $scope.listAnticipos2.push($scope.anticipo6);
-        $scope.consolidado2 = {"usuario": $scope.userApp2, "total": "6000000", "detalle": $scope.listAnticipos2,"sede":"Sede 2"};
+        $scope.consolidado2 = {"usuario": $scope.userApp2, "total": "7000000", "detalle": $scope.listAnticipos2, "sede": "Sede 2"};
         $scope.listConsolidado.push($scope.consolidado2);
-        
-         //datos prueba user3
+
+        //datos prueba user3
         $scope.anticipo7 = {"id": "166611", "fecha": "02/01/2017", "monto": "2000000", "estadop": "PAGADO", "user": $scope.userApp3, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "1"};
         $scope.anticipo8 = {"id": "22662", "fecha": "09/01/2017", "monto": "3500000", "estadop": "PAGADO", "user": $scope.userApp3, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "2"};
         $scope.anticipo9 = {"id": "336663", "fecha": "16/01/2017", "monto": "2500000", "estadop": "PAGADO", "user": $scope.userApp3, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "3"};
@@ -48,9 +48,9 @@ module.controller('ConsolidaAllCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.listAnticipos3.push($scope.anticipo7);
         $scope.listAnticipos3.push($scope.anticipo8);
         $scope.listAnticipos3.push($scope.anticipo9);
-        $scope.consolidado3 = {"usuario": $scope.userApp3, "total": "80000000", "detalle": $scope.listAnticipos3 ,"sede":"Sede 1"};
+        $scope.consolidado3 = {"usuario": $scope.userApp3, "total": "8000000", "detalle": $scope.listAnticipos3, "sede": "Sede 1"};
         $scope.listConsolidado.push($scope.consolidado3);
-        
+
         //datos prueba user4
         $scope.anticipo11 = {"id": "177711", "fecha": "02/01/2017", "monto": "2500000", "estadop": "PAGADO", "user": $scope.userApp4, "justificacion": "Prueba de justificacion", "soportes": $scope.listSoportes, "semana": "1"};
         $scope.anticipo12 = {"id": "227772", "fecha": "09/01/2017", "monto": "3500000", "estadop": "PAGADO", "user": $scope.userApp4, "justificacion": "Prueba de justificacion", "soportes": $scope.listSoportes, "semana": "2"};
@@ -59,9 +59,9 @@ module.controller('ConsolidaAllCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.listAnticipos4.push($scope.anticipo11);
         $scope.listAnticipos4.push($scope.anticipo12);
         $scope.listAnticipos4.push($scope.anticipo13);
-        $scope.consolidado4 = {"usuario": $scope.userApp4, "total": "85000000", "detalle": $scope.listAnticipos4 ,"sede":"Sede 3"};
+        $scope.consolidado4 = {"usuario": $scope.userApp4, "total": "85000000", "detalle": $scope.listAnticipos4, "sede": "Sede 3"};
         $scope.listConsolidado.push($scope.consolidado4);
-        
+
         //datos prueba user5
         $scope.anticipo14 = {"id": "177711", "fecha": "02/01/2017", "monto": "2500000", "estadop": "PAGADO", "user": $scope.userApp5, "justificacion": "Prueba de justificacion", "soportes": $scope.listSoportes, "semana": "1"};
         $scope.anticipo15 = {"id": "227772", "fecha": "09/01/2017", "monto": "3500000", "estadop": "PAGADO", "user": $scope.userApp5, "justificacion": "Prueba de justificacion", "soportes": $scope.listSoportes, "semana": "2"};
@@ -70,16 +70,31 @@ module.controller('ConsolidaAllCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.listAnticipos5.push($scope.anticipo14);
         $scope.listAnticipos5.push($scope.anticipo15);
         $scope.listAnticipos5.push($scope.anticipo16);
-        $scope.consolidado5 = {"usuario": $scope.userApp5, "total": "85000000", "detalle": $scope.listAnticipos5,"sede":"Sede 4"};
+        $scope.consolidado5 = {"usuario": $scope.userApp5, "total": "8500000", "detalle": $scope.listAnticipos5, "sede": "Sede 4"};
         $scope.listConsolidado.push($scope.consolidado5);
 
-        $scope.verDetalleConsolidado = function(row){
+        $scope.detalleSelected = {};
+        $scope.total = 0;
+        $scope.verDetalleConsolidado = function (row) {
+            $scope.total = 0;
             console.log(JSON.stringify(row));
+            $scope.detalleSelected = row;
             $('#modalTitulo').html('Detalle Consolidado');
             $('#modalTituloDecripcion').html('Información del consolidado');
+
+            angular.forEach($scope.detalleSelected.detalle, function (value, key) {
+                console.log(value.monto);
+                $scope.sumar(parseInt(value.monto));
+            });
+
+
             //$('#modalTituloContenido').html(JSON.stringify(row));
             //$('#dlgProccesing').modal();
             $('#dlgdatail').modal();
+        };
+
+        $scope.sumar = function (cantidad) {
+            $scope.total  += cantidad;
         };
 
     }]);
