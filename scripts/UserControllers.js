@@ -146,6 +146,8 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
         $scope.montoGastado = '10000000';
         $scope.montoRestante = '10000000';
         $scope.datosTabla = [];
+        $scope.nuevoRegistro = {};
+        $scope.id = 1;
 
         $scope.conceptos = conceptos;
         $scope.mostrarMensaje = mostrarMensaje;
@@ -172,19 +174,7 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
             "observacion": "Solicitud para la compra de ..."
         };
 
-        $scope.datos2 = {
-            "id": "2",
-            "monto": "newsoporte.datosFormulario.valor",
-            "concepto": "newsoporte.datosFormulario.concepto",
-            "fechaSolicitud": new Date(),
-            "estado": "Registrado",
-            "legalizado": "1",
-            "observacion": "newsoporte.datosFormulario.observacion"
-        };
-
-
         $scope.datosTabla.push($scope.datos1);
-        $scope.datosTabla.push($scope.datos2);
 
         function conceptos() {
             $scope.errores = {};
@@ -202,10 +192,17 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
                 $scope.errores.observacion = 'Campo obligatorio';
             }
             if (!error) {
+                $scope.newsoporte.id = $scope.id + 1;
                 $scope.newsoporte.concepto = $scope.datosFormulario.concepto;
-                $scope.newsoporte.valor = $scope.datosFormulario.valor;
+                $scope.newsoporte.monto = $scope.datosFormulario.valor;
+                $scope.newsoporte.fechaSolicitud = new Date();
                 $scope.newsoporte.observacion = $scope.datosFormulario.observacion;
-                $scope.mostrarMensaje($scope.newsoporte);
+                $scope.newsoporte.legalizado = "1";
+                $scope.newsoporte.estado = "Registrado";
+                $scope.datosTabla.push($scope.newsoporte);
+                $scope.consecutivoId.push($scope.newsoporte.id);
+                $scope.mostrarMensaje("El registro se guardo de forma exitosa");
+                $scope.newsoporte = {};
             }
             ;
         }
@@ -222,13 +219,13 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
         function mostrarTabla(newsoporte) {
             $scope.verSolicitud = true;
             $scope.verFormulario = false;
-            $scope.datos2(newsoporte);
         }
         ;
 
         function mostrarFormulario() {
             $scope.verSolicitud = false;
             $scope.verFormulario = true;
+            $scope.datosFormulario = {};
         }
         ;
 
@@ -314,12 +311,13 @@ module.controller('LegalizacionUserCtrl', ['$scope', '$http', function ($scope, 
 
         }
         ;
-        
-        function legalizado (){
+
+        function legalizado() {
             $('#modalTitulo').html('Información');
             $('#modalTituloContenido').html('El registro ha sido legalizado');
             $('#legaDlg').modal();
-        };
+        }
+        ;
 
         function mostrarMensaje() {
             $('#modalTitulo').html('Legalización');
@@ -329,4 +327,3 @@ module.controller('LegalizacionUserCtrl', ['$scope', '$http', function ($scope, 
         ;
     }]);
 
-        

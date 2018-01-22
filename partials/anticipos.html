@@ -91,7 +91,7 @@
                 </div>
                 <div class="text-center">
                     <button class="btn btn-success" ng-click="conceptos()">Registrar</button>
-                    <button class="btn btn-default">Cancelar</button>
+                    <button class="btn btn-default" ng-click="mostrarTabla()">Ver</button>
                 </div>
             </div>
         </div>
@@ -137,8 +137,8 @@
                             <tr ng-repeat="datoTabla in datosTabla">
                                 <td>{{datoTabla.id}}</td>
                                 <td>{{datoTabla.monto|currency}}</td>
-                                <td>{{datoTabla.concepto}}</td>
                                 <td>{{datoTabla.fechaSolicitud| date:'dd/MM/yyyy'}}</td>
+                                <td>{{datoTabla.concepto}}</td>
                                 <td>{{datoTabla.estado}}</td>
                                 <td>
                                     <div ng-show="datoTabla.legalizado === '1'" align="CENTER">
