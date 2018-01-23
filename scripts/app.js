@@ -13,6 +13,7 @@ module.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/Legalizar', {templateUrl: 'partials/legalizacion.html', controller: 'LegalizacionUserCtrl'});
         //admin
         $routeProvider.when('/Consolidado', {templateUrl: 'partials/admin/consolidados.html', controller: 'ConsolidaAllCtrl'});
+        $routeProvider.when('/VerAnticipos', {templateUrl: 'partials/admin/anticipos.html', controller: 'AnticiposAllCtrl'});
         
         $routeProvider.otherwise({redirectTo: '/home'});
     }]);
