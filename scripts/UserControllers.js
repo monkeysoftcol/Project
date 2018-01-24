@@ -218,7 +218,6 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
                 $scope.newsoporte.legalizado = "1";
                 $scope.newsoporte.estado = "Registrado";
                 $scope.datosTabla.push($scope.newsoporte);
-                $scope.consecutivoId.push($scope.newsoporte.id);
                 $scope.mostrarMensaje("El registro se guardo de forma exitosa");
                 $scope.newsoporte = {};
             }
