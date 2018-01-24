@@ -206,3 +206,50 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="dlgdatail" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <h4 class="modal-title"><span id="modalTitulo"> </span></h4>
+                <small class="font-bold"><span id="modalTituloDecripcion"> </span></small>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table cellpadding="1" cellspacing="1" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>monto</th>
+                                    <th>fechaRegistro</th>
+                                    <th>estado</th>
+                                    <th>fechaAprobacion</th>
+                                    <th>observacion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="info in detalleSelected.detalle">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{info.fecha}}</td>
+                                    <td>{{info.estadop}}</td>
+                                    <td>{{info.semana}}</td>
+                                    <td class="">{{info.monto | currency}}</td>
+                                    <td class="">{{info.monto | currency}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
