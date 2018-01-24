@@ -14,7 +14,7 @@ module.config(['$routeProvider', function ($routeProvider) {
         //admin
         $routeProvider.when('/Consolidado', {templateUrl: 'partials/admin/consolidados.html', controller: 'ConsolidaAllCtrl'});
         $routeProvider.when('/VerAnticipos', {templateUrl: 'partials/admin/anticipos.html', controller: 'AnticiposAllCtrl'});
-        $routeProvider.when('/VerLegalizacion', {templateUrl: 'partials/admin/legalizacion.html', controller: 'AnticiposAllCtrl'});
+        $routeProvider.when('/VerLegalizacion', {templateUrl: 'partials/admin/legalizacion.html', controller: 'LegalizacionAllCtrl'});
         
         $routeProvider.otherwise({redirectTo: '/home'});
     }]);

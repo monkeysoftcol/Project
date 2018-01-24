@@ -87,7 +87,7 @@ function baseController($scope) {
 
     $scope.listMenuAdmin = [
         {"titulo": "Ver Anticipos", "url": "#VerAnticipos", "new":"true","submenu":"null"},
-        {"titulo": "Aprobar Legalizacion", "url": "#AprobarLegalizar", "new":"true","submenu":"null"},
+        {"titulo": "Aprobar Legalizacion", "url": "#VerLegalizacion", "new":"true","submenu":"null"},
         {"titulo": "Ver Consolidados", "url": "#Consolidado", "new":"true","submenu":"null"},
         {"titulo": "Perfil", "url": "#MiPerfil", "new":"true","submenu":"null"}
     ];

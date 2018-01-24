@@ -99,12 +99,8 @@ module.controller('ConsolidaAllCtrl', ['$scope', '$http', function ($scope, $htt
 
     }]);
 
-
 module.controller('AnticiposAllCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador AnticiposAllCtrl cargado!!!!");
-        baseController($scope);
-
-        console.log("Controlador ConsolidadosCtrl cargado!!!!");
         baseController($scope);
 
         $scope.currentPage = 1;
@@ -228,7 +224,7 @@ module.controller('AnticiposAllCtrl', ['$scope', '$http', function ($scope, $htt
             });
 
             angular.forEach($scope.listAntPagados, function (value, key) {
-                if (value && value.monto !=="undefined") {
+                if (value && value.monto !== "undefined") {
                     console.log(value.monto);
                     $scope.totalAprobados += parseInt(value.monto);
                 }
@@ -236,7 +232,7 @@ module.controller('AnticiposAllCtrl', ['$scope', '$http', function ($scope, $htt
             });
 
             angular.forEach($scope.listAntLegalizar, function (value, key) {
-                if (value && value.monto !=="undefined") {
+                if (value && value.monto !== "undefined") {
                     console.log(value.monto);
                     $scope.totalLegalizar += parseInt(value.monto);
                 }
@@ -280,5 +276,153 @@ module.controller('AnticiposAllCtrl', ['$scope', '$http', function ($scope, $htt
                 $('#dlgExito').modal();
             }
         };
+
+    }]);
+
+module.controller('LegalizacionAllCtrl', ['$scope', '$http', function ($scope, $http) {
+        console.log("Controlador AnticiposAllCtrl cargado!!!!");
+        baseController($scope);
+
+        $scope.currentPage = 1;
+        $scope.pageSize = 5;
+        $scope.pageChangeHandler = function (num) {
+            console.log('going to page ' + num);
+        };
+
+        $scope.userApp1 = {"name": "Oscar Andres Lopez", "user": "olopez", "pass": "test1", "email": "olopez@campolimpio.com", "ndoc": "12121", "role": "USER"};
+        $scope.userApp2 = {"name": "Diana Carolina Osorio", "user": "dosorio", "pass": "test1", "email": "dosorio@campolimpio.com", "ndoc": "131313", "role": "USER"};
+        $scope.userApp3 = {"name": "Andres Lopez Lopez", "user": "alopez", "pass": "test1", "email": "alopez@campolimpio.com", "ndoc": "141414", "role": "USER"};
+        $scope.userApp4 = {"name": "Alam Brito Garzon", "user": "agarzon", "pass": "test1", "email": "agarzon@campolimpio.com", "ndoc": "151515", "role": "USER"};
+        $scope.userApp5 = {"name": "Maria Paula Dominguez", "user": "mdominguez", "pass": "test1", "email": "mdominguez@campolimpio.com", "ndoc": "161616", "role": "USER"};
+
+        $scope.soporte1 = {"id": "1", "nombre": "factura 1.pdf"};
+        $scope.soporte2 = {"id": "2", "nombre": "Cotización proyecto.doc"};
+        $scope.soporte3 = {"id": "3", "nombre": "Tabla de gastos.xls"};
+        $scope.listSoportes = [];
+        $scope.listSoportes.push($scope.soporte1);
+        $scope.listSoportes.push($scope.soporte2);
+        $scope.listSoportes.push($scope.soporte3);
+
+        $scope.listAntA = [];
+        $scope.listAntP = [];
+
+        $scope.soporte1 = {"id": "1", "nombre": "factura 1.pdf"};
+        $scope.soporte2 = {"id": "2", "nombre": "Cotización proyecto.doc"};
+        $scope.soporte3 = {"id": "3", "nombre": "Tabla de gastos.xls"};
+        $scope.listSoportes = [];
+        $scope.listSoportes.push($scope.soporte1);
+        $scope.listSoportes.push($scope.soporte2);
+        $scope.listSoportes.push($scope.soporte3);
+
+        $scope.detalle1 = {"id":"1", "fecha":"23/01/2017", "justificacion":"Gasto numero 1 debido a las necesidades de la empresa", "soporte":$scope.soporte1,"monto":"1500000"};
+        $scope.detalle2 = {"id":"2", "fecha":"23/01/2017", "justificacion":"Gasto numero 2 debido a las necesidades de la empresa", "soporte":$scope.soporte2,"monto":"2500000"};
+        $scope.detalle3 = {"id":"3", "fecha":"23/01/2017", "justificacion":"Gasto numero 3 debido a las necesidades de la empresa", "soporte":$scope.soporte3,"monto":"1850000"};
+        $scope.listDetalles =[];
+        $scope.listDetalles.push($scope.detalle1);
+        $scope.listDetalles.push($scope.detalle2);
+        $scope.listDetalles.push($scope.detalle3);
+
+        //datos prueba user1
+        $scope.anticipo3 = {"id": "333", "fecha": "16/01/2017", "monto": "7895000", "estadop": "POR_LEGALIZAR", "user": $scope.userApp1, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "3","legalizacion":$scope.listDetalles};
+        $scope.listAntA.push($scope.anticipo3);
+       
+        //datos prueba user2
+        $scope.anticipo4 = {"id": "444", "fecha": "02/01/2017", "monto": "1000000", "estadop": "POR_LEGALIZAR", "user": $scope.userApp2, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "1","legalizacion":$scope.listDetalles};
+        $scope.listAntA.push($scope.anticipo4);
+       
+        //datos prueba user3
+        $scope.anticipo7 = {"id": "166611", "fecha": "02/01/2017", "monto": "2000000", "estadop": "POR_LEGALIZAR", "user": $scope.userApp3, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "1","legalizacion":$scope.listDetalles};
+        $scope.listAntA.push($scope.anticipo7);
+        $scope.anticipo9 = {"id": "336663", "fecha": "16/01/2017", "monto": "2500000", "estadop": "POR_LEGALIZAR", "user": $scope.userApp3, "justificacion": "Prueba", "soportes": $scope.listSoportes, "semana": "3","legalizacion":$scope.listDetalles};
+        $scope.listAntA.push($scope.anticipo9);
+       
+        //datos prueba user4
+        $scope.anticipo13 = {"id": "377733", "fecha": "16/01/2017", "monto": "2500000", "estadop": "POR_LEGALIZAR", "user": $scope.userApp4, "justificacion": "Prueba de justificacion", "soportes": $scope.listSoportes, "semana": "3","legalizacion":$scope.listDetalles};
+        $scope.listAntA.push($scope.anticipo13);
+        
+        //datos prueba user5
+        $scope.anticipo16 = {"id": "377733", "fecha": "16/01/2017", "monto": "2500000", "estadop": "POR_LEGALIZAR", "user": $scope.userApp5, "justificacion": "Prueba de justificacion", "soportes": $scope.listSoportes, "semana": "3"};
+        $scope.listAntA.push($scope.anticipo16);
+        
+
+        $scope.detalleSelected = {};
+        $scope.total = 0;
+        $scope.verDetalleConsolidado = function (row) {
+            $scope.total = 0;
+            console.log(JSON.stringify(row));
+            $scope.detalleSelected = row;
+            $('#modalTitulo').html('Detalle Anticipo');
+            $('#modalTituloDecripcion').html('Información solicitud de anticipo');
+
+            $('#dlgdatail').modal();
+        };
+
+        $scope.totalSolcitudes = 0;
+        $scope.totalAprobados = 0;
+        $scope.totalLegalizar = 0;
+        $scope.calcularTotales = function () {
+            $scope.totalSolcitudes = 0;
+            $scope.totalAprobados = 0;
+            $scope.totalLegalizar = 0;
+
+            angular.forEach($scope.listAntAprobados, function (value, key) {
+                console.log(value.monto);
+                $scope.totalSolcitudes += parseInt(value.monto);
+            });
+
+            angular.forEach($scope.listAntPagados, function (value, key) {
+                if (value && value.monto !== "undefined") {
+                    console.log(value.monto);
+                    $scope.totalAprobados += parseInt(value.monto);
+                }
+
+            });
+
+            angular.forEach($scope.listAntLegalizar, function (value, key) {
+                if (value && value.monto !== "undefined") {
+                    console.log(value.monto);
+                    $scope.totalLegalizar += parseInt(value.monto);
+                }
+            });
+        };
+        $scope.calcularTotales();
+
+
+        $scope.sumar = function (cantidad) {
+            $scope.total += cantidad;
+        };
+
+        $scope.anticipoSelected;
+        $scope.dlgconfirmarAprobacion = function (row) {
+            $scope.total = 0;
+            $scope.anticipoSelected = row;
+            //$('#modalTitulo').html('Confirmación');
+            //$('#modalTituloDecripcion').html('Confirmación aprobación solicitud');
+            //$('#modalTituloContenido').html("Está seguro de realizar la aprobación del Anticipo seleccionado");
+            $('#dlconfirmacionAprobacion').modal();
+        };
+
+        $scope.aceptarAprobacionAnticipo = function () {
+            if ($scope.anticipoSelected) {
+                $('#dlconfirmacionAprobacion').modal('hide');
+                $('#modalexitocontenido').html("La solicitud de anticipo se aprobó exitosamente. Ahora proceder a realizar el pago solicitado.");
+                $('#dlgExito').modal();
+            }
+        };
+
+        $scope.dlgconfirmarRechazo = function (row) {
+            $scope.total = 0;
+            $scope.anticipoSelected = row;
+            $('#dlconfirmacionRechazo').modal();
+        };
+
+        $scope.aceptarRechazoAnticipo = function () {
+            if ($scope.anticipoSelected) {
+                $('#dlconfirmacionRechazo').modal('hide');
+                $('#modalexitocontenido').html("La solicitud se ha rechazado exitosamente. Se envió un Email de notificación al usuario");
+                $('#dlgExito').modal();
+            }
+        };
+
 
     }]); 
