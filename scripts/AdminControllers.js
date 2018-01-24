@@ -445,3 +445,12 @@ module.controller('LegalizacionAllCtrl', ['$scope', '$http', function ($scope, $
 
 
     }]); 
+
+
+module.controller('ProfileCtrl', ['$scope', '$http', function ($scope, $http) {
+        console.log("Controlador ProfileCtrl cargado!!!!");
+        baseController($scope);
+        
+        
+
+  }]); 

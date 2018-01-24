@@ -90,7 +90,8 @@ function baseController($scope) {
         {"titulo": "Aprobar Legalizacion", "url": "#VerLegalizacion", "new":"true","submenu":"null"},
         {"titulo": "Ver Consolidados", "url": "#Consolidado", "new":"true","submenu":"null"},
         {"titulo": "Perfil", "url": "#MiPerfil", "new":"true","submenu":"null"},
-        {"titulo": "Usuarios", "url": "#VerUsuarios", "new":"false","submenu":"null"}
+        {"titulo": "Usuarios", "url": "#VerUsuarios", "new":"false","submenu":"null"},
+        {"titulo": "Perfil", "url": "#MiPerfil", "new":"false","submenu":"null"}
     ];
 
     //REGISTRADO, APROBADO, ANULADO, RECHAZO, PAGADO, POR_LEGALIZAR

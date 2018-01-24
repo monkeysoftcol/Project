@@ -3,6 +3,10 @@ module.controller('defaultCtrl', ['$scope', '$http', function ($scope, $http) {
         baseController($scope);
         $scope.appName();
         $scope.cambiarUsuario(2);
+        
+        $scope.forzarCambioUsuario = function(param){
+            $scope.cambiarUsuario(param);
+        };
 
     }]);
 
