@@ -1,0 +1,437 @@
+
+
+<div class="col-lg-12" ng-show="verlist">
+    <div class="hpanel">
+        <div class="panel-heading">
+            <h2>
+                Legalizaciones pendientes de aprobación
+            </h2>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id.</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
+                            <th>Monto solicitado</th>
+                            <th>Semana</th>
+                            <th>Detalle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="anticipo in listAntA | itemsPerPage: pageSize:'tblanticipossolicitud'" current-page="currentPage" pagination-id="tblanticipossolicitud">
+                            <td>{{$index + 1}}</td>
+                            <td>{{anticipo.user.name}}</td>
+                            <td>{{anticipo.fecha}}</td>
+                            <td>{{anticipo.monto|currency}}</td>
+                            <td>{{anticipo.semana}}</td>
+                            <td>
+                                <div align="CENTER">
+                                    <button type="button" class="btn w-xs btn-success" ng-click="verDetalleConsolidado(anticipo)"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
+                                    <!--                                    <button type="button" class="btn w-xs btn-warning" ng-click="dlgconfirmarAprobacion(anticipo)" ><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Aprobar</button>
+                                                                        <button type="button" class="btn w-xs btn-danger"  ng-click="dlgconfirmarRechazo(anticipo)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Rechazar</button>-->
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <div class="text-center">
+                        <dir-pagination-controls pagination-id="tblanticipossolicitud" boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <h3 class="no-margins font-extra-bold text-success">{{totalSolcitudes|currency}}</h3>
+                <div class="font-bold">Total<i class="fa fa-level-up text-success"></i></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12" ng-show="verdetails">
+    <div class="hpanel hblue">
+        <div class="panel-heading hbuilt">
+            <div class="panel-tools">
+                <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                <a class="closebox"><i class="fa fa-times"></i></a>
+            </div>
+            Detalle legalización del Anticipo
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" >Usuario : </label>
+                        {{detalleSelected.user.name}}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" >Email : </label>{{detalleSelected.user.email}}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" >Fecha : </label>{{detalleSelected.fecha}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" >Monto solicitado : </label>{{detalleSelected.monto|currency}}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" >Semana : </label>{{detalleSelected.semana}}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" >Justificación : </label>{{detalleSelected.justificacion}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table cellpadding="1" cellspacing="1" class="table">
+                            <thead>
+                                <tr><th colspan="3"><strong>Soportes Anticipo</strong></th></tr>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Descargar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="soporte in detalleSelected.soportes">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{soporte.nombre}}</td>
+                                    <td>
+                                        <a class="btn btn-default">
+                                                    <i class="fa fa-download"></i>
+                                                </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="table-responsive">
+
+                        <table cellpadding="1" cellspacing="1" class="table">
+                            <thead>
+                                <tr><th colspan="3"><strong>Soportes legalización del anticipo</strong></th></tr>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Justificación</th>
+                                    <th>Descargar soportes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="detallelegalizacion in detalleSelected.legalizacion">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{detallelegalizacion.fecha}}</td>
+                                    <td>{{detallelegalizacion.monto|currency}}</td>
+                                    <td>{{detallelegalizacion.justificacion}}</td>
+                                    <td>
+                                        <ul>
+                                            <li ng-repeat="file in detalleSelected.soportes">
+                                                <a class="btn btn-default"><i class="fa fa-download"></i></a> {{file.nombre}}
+                                            </li>
+                                        </ul>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-footer text-right">
+            <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="aceptarRechazoAnticipo(3)">Aprobar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="aceptarRechazoAnticipo(2)">Rechazar</button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal" ng-click="aceptarRechazoAnticipo(1)">Devolver</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="volver()">Cerrar</button>
+        </div>
+    </div>
+
+</div>
+
+<!--Estadisticas valores totales año presente-->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="hpanel stats">
+            <div class="panel-body list">
+                <div class="stats-title pull-left">
+                    <h4>Montos Asignados 2017</h4>
+                </div>
+                <div class="stats-icon pull-right">
+                    <i class="pe-7s-science fa-4x"></i>
+                </div>
+                <br><br>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 185.000.000</h3>
+
+                        <div class="font-bold">Enero<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 250.000.000</h3>
+
+                        <div class="font-bold">Febrero<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 85.000.000</h3>
+
+                        <div class="font-bold">Marzo<i class="fa fa-level-up"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 25.000.000</h3>
+
+                        <div class="font-bold">Abril<i class="fa fa-level-up"></i></div>
+                    </div>
+
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 48.568.000</h3>
+
+                        <div class="font-bold">Mayo<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 52.000.000</h3>
+
+                        <div class="font-bold">Junio<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 46.785.500</h3>
+
+                        <div class="font-bold">Julio<i class="fa fa-level-up"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 35.252.636</h3>
+
+                        <div class="font-bold">Agosto<i class="fa fa-level-up"></i></div>
+                    </div>
+
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 25.689.560</h3>
+
+                        <div class="font-bold">Septiembre<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold text-success">$ 78.252.100</h3>
+
+                        <div class="font-bold">Octubre<i class="fa fa-level-up text-success"></i></div>
+                    </div>
+                </div>
+                <div class="row m-t-md">
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 26.478.566</h3>
+
+                        <div class="font-bold">Noviembre<i class="fa fa-level-up"></i></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="no-margins font-extra-bold ">$ 32.222.000</h3>
+
+                        <div class="font-bold">Diciembre<i class="fa fa-level-up"></i></div>
+                    </div>
+
+                </div>
+            </div>   
+        </div>
+    </div>
+
+
+</div>
+
+<div class="modal fade" id="dlgdatail" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <h4 class="modal-title"><span id="modalTitulo"> </span></h4>
+                <small class="font-bold"><span id="modalTituloDecripcion"> </span></small>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Usuario : </label>
+                            {{detalleSelected.user.name}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Email : </label>{{detalleSelected.user.email}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Fecha : </label>{{detalleSelected.fecha}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Monto solicitado : </label>$ {{detalleSelected.monto|currency}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Semana : </label>{{detalleSelected.semana}}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" >Justificación : </label>{{detalleSelected.justificacion}}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table cellpadding="1" cellspacing="1" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Descargar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="soporte in detalleSelected.soportes">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{soporte.nombre}}</td>
+                                        <td>
+                                            <div align="CENTER">
+                                                <button type="button" class="btn w-xs btn-success"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="table-responsive">
+                            <table cellpadding="1" cellspacing="1" class="table">
+                                <thead>
+                                    <tr><th colspan="3"><strong>Soportes Anticipo</strong></th></tr>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Descargar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="soporte in detalleSelected.soportes">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{soporte.nombre}}</td>
+                                        <td>
+                                            <div align="CENTER">
+                                                <button type="button" class="btn w-xs btn-success"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="dlconfirmacionAprobacion" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header">
+                <h4 class="modal-title">Confirmación Aprobación</h4>
+                <small class="font-bold">Por favor confirme la aprobación de la solicitud de anticipo</small>
+            </div>
+            <div class="modal-body">
+                <p>Está seguro de realizar la aprobación de la solicitud de Anticipo?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" ng-click="aceptarAprobacionAnticipo()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="dlconfirmacionRechazo" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Confirmación Rechazo</h4>
+                <small class="font-bold">Por favor confirme el rechazo de la solicitud de anticipo</small>
+            </div>
+            <div class="modal-body">
+                <p>Está seguro de rechazar la solicitud de Anticipo?</p>
+                <div class="row">
+                    <form role="form" id="form">
+                        <div class="form-group"><label>Justificación</label> <input type="text" placeholder="Ingrese la justificación del rechazo" class="form-control" name="txtjustificacion"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" ng-click="aceptarRechazoAnticipo()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade hmodal-success" id="dlgExito" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header">
+                <h4 class="modal-title">Información</h4>
+                <!--<small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>-->
+            </div>
+            <div class="modal-body">
+                <p><span id="modalexitocontenido"> </span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
