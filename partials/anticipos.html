@@ -52,17 +52,84 @@
         <div class="hpanel">
             <div class="panel-body">
                 <div class="row">
-                    <div class="form-group col-lg-6" ng-class="{'has-error': errores.concepto}">
-                        <label>Concepto</label>
-                        <input 
-                            type="text" 
-                            id="concepto" 
-                            class="form-control" 
-                            ng-model="datosFormulario.concepto"
-                            name="" 
-                            placeholder="Ingrese el concepto.."
-                            capitalize/>
-                        <span ng-show="errores.concepto" class="control-label">{{errores.concepto}}</span>
+                    <div class="pull-left">
+                        <div class="col-xs-9 col-sm-9">
+                            <div class="form-group" ng-class="{'has-error': errores.mes}">
+                                <label>Mes</label>
+                                <select class="form-control" 
+                                        id="sel" 
+                                        name="name" 
+                                        style="width:505px" 
+                                        ng-model="datosFormulario.mes" 
+                                        ng-options="mes.nombre for mes in meses">
+                                    <option value="">--Seleccione un mes--</option>    
+                                </select>
+                                <span ng-show="errores.mes" class="control-label">{{errores.mes}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="col-xs-9 col-sm-9">
+                            <div class="form-group" ng-class="{'has-error': errores.semana}">
+                                <label>Semana</label>
+                                <select class="form-control" 
+                                        id="sel" 
+                                        name="name" 
+                                        style="width:505px" 
+                                        ng-model="datosFormulario.semana" 
+                                        ng-options="semana.nombre for semana in semanas">
+                                    <option value="">--Seleccione una semana--</option> 
+                                </select>
+                                <span ng-show="errores.semana" class="control-label">{{errores.semana}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-left">
+                        <div class="col-xs-9 col-sm-9 form-group" ng-class="{'has-error': errores.actividad}">
+                            <label>Actividad programada</label>
+                            <input 
+                                type="text" 
+                                id="concepto" 
+                                class="form-control"
+                                style="width:505px"
+                                ng-model="datosFormulario.actividad"
+                                name="" 
+                                placeholder="Ingrese la actividad.."
+                                capitalize/>
+                            <span ng-show="errores.actividad" class="control-label">{{errores.actividad}}</span>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="col-xs-9 col-sm-9">
+                            <div class="form-group" ng-class="{'has-error': errores.concepto}">
+                                <label>Conceptos de gastos</label>
+                                <select class="form-control" 
+                                        id="sel" 
+                                        name="name" 
+                                        style="width:505px" 
+                                        ng-model="datosFormulario.concepto" 
+                                        ng-options="concepto.nombre for concepto in conceptos">
+                                    <option value="">--Seleccione un concepto--</option> 
+                                </select>
+                                <span ng-show="errores.concepto" class="control-label">{{errores.concepto}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-left">
+                        <div class="col-xs-9 col-sm-9">
+                            <div class="form-group" ng-class="{'has-error': errores.municipio}">
+                                <label>Municipio</label>
+                                <select class="form-control" 
+                                        id="sel" 
+                                        name="name" 
+                                        style="width:505px" 
+                                        ng-model="datosFormulario.municipio" 
+                                        ng-options="municipio.nombre for municipio in municipios">
+                                    <option value="">--Seleccione un municipio--</option> 
+                                </select>
+                                <span ng-show="errores.municipio" class="control-label">{{errores.municipio}}</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-lg-6" ng-class="{'has-error': errores.valor}">
                         <label>Valor</label>
@@ -78,19 +145,9 @@
                         </div>
                         <span ng-show="errores.valor" class="control-label">{{errores.valor}}</span>
                     </div> 
-                    <div class="form-group col-lg-6" ng-class="{'has-error': errores.observacion}">
-                        <label>Obervación</label>
-                        <textarea 
-                            class="form-control" 
-                            ng-model="datosFormulario.observacion" 
-                            placeholder="Ingrese la observación.."
-                            rows="3">    
-                        </textarea>
-                        <span ng-show="errores.observacion" class="control-label">{{errores.observacion}}</span>
-                    </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-success" ng-click="conceptos()">Registrar</button>
+                    <button class="btn btn-success" ng-click="solicitar()">Registrar</button>
                     <button class="btn btn-default" ng-click="mostrarTabla()">Ver</button>
                 </div>
             </div>
@@ -125,37 +182,48 @@
                         <thead>
                             <tr>
                                 <th>Id.</th>
-                                <th>Monto</th>
-                                <th>Fecha Solicitud</th>
-                                <th>Concepto</th>
-                                <th>Estado</th>
-                                <th>Legalizado</th>
-                                <th>Observación</th>
+                                <th>Mes</th>
+                                <th>Semana</th>
+                                <th>actividad</th>
+                                <th>concepto</th>
+                                <th>municipio</th>
+                                <th>valor</th>
+                                <th>estado</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="datoTabla in datosTabla">
                                 <td>{{datoTabla.id}}</td>
-                                <td>{{datoTabla.monto|currency}}</td>
-                                <td>{{datoTabla.fechaSolicitud| date:'dd/MM/yyyy'}}</td>
+                                <td>{{datoTabla.mes}}</td>
+                                <td>{{datoTabla.semana}}</td>
+                                <td>{{datoTabla.actividad}}</td>
                                 <td>{{datoTabla.concepto}}</td>
-                                <td>{{datoTabla.estado}}</td>
+                                <td>{{datoTabla.municipio}}</td>
+                                <td>{{datoTabla.valor|currency}}</td>
                                 <td>
-                                    <div ng-show="datoTabla.legalizado === '1'" align="CENTER">
-                                        <span style="color:red" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    <div ng-show="datoTabla.estado === '1'" align="CENTER">
+                                        <a class="btn btn-ms btn-warning">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true">Pendiente</span>
+                                        </a>
                                     </div>
-                                    <div ng-show="datoTabla.legalizado === '2'" align="CENTER">
-                                        <span style="color:#62cb31" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    <div ng-show="datoTabla.estado === '2'" align="CENTER">
+                                        <a class="btn btn-ms btn-success">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true">Pagado</span>
+                                        </a>
+                                    </div>
+                                    <div ng-show="datoTabla.estado === '3'" align="CENTER">
+                                        <a class="btn btn-ms btn-danger">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true">Rechazado</span>
+                                        </a>
                                     </div>
                                 </td>
-                                <td>{{datoTabla.observacion}}</td>
                             </tr>
                         </tbody>
                     </table>
                     <button class="btn btn-success " type="button" ng-click="mostrarFormulario()"><span class="bold">Regresar</span></button>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>

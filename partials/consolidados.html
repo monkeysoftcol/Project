@@ -16,10 +16,9 @@
                             <tr>
                                 <th>Id.</th>
                                 <th>Monto</th>
-                                <th>Fecha Solicitud</th>
+                                <th>Actividad</th>
                                 <th>Estado</th>
                                 <th>Fecha Aprobación o Rechazo</th>
-                                <th>Observación</th>
                                 <th>Detalle</th>
                             </tr>
                         </thead>
@@ -27,15 +26,12 @@
                             <tr ng-repeat="datoTabla in consolidado">
                                 <td>{{datoTabla.id}}</td>
                                 <td>{{datoTabla.monto|currency}}</td>
-                                <td>{{datoTabla.fechaRegistro}}</td>
+                                <td>{{datoTabla.actividad}}</td>
+                                
                                 <td>{{datoTabla.estado}}</td>
                                 <td>
                                     <div ng-show="datoTabla.fechaAprobacion === 'null'"></div>
                                     <div ng-show="datoTabla.fechaAprobacion !== 'null'">{{datoTabla.fechaAprobacion}}</div>
-                                </td>
-                                <td>
-                                    <div ng-show="datoTabla.observacion === 'null'"></div>
-                                    <div ng-show="datoTabla.observacion !== 'null'">{{datoTabla.observacion}}</div>
                                 </td>
                                 <td>
                                     <div align="CENTER">

@@ -5,11 +5,15 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.consolidado = [];
         $scope.listadoLegalizado = [];
         $scope.ultimosMontosAprobados = [];
+        
+        $scope.mostrarMensaje = mostrarMensaje;
+        $scope.verDetalle = verDetalle;
+        $scope.verMas = verMas;
         //REGISTRADO, APROBADO, ANULADO, RECHAZO, PAGADO, POR_LEGALIZAR
         $scope.datosTabla1 = {
             "id": "1",
             "monto": "10000",
-            "fechaRegistro": "01/01/2017",
+            "actividad": "Compra",
             "estado": "REGISTRADO",
             "fechaAprobacion": "null",
             "observacion": "null"
@@ -17,7 +21,7 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.datosTabla2 = {
             "id": "2",
             "monto": "2000",
-            "fechaRegistro": "05/07/2017",
+            "actividad": "Arriendo",
             "estado": "APROBADO",
             "fechaAprobacion": "06/07/2017",
             "observacion": "null"
@@ -25,7 +29,7 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.datosTabla3 = {
             "id": "3",
             "monto": "5000",
-            "fechaRegistro": "11/11/2017",
+            "actividad": "Compra",
             "estado": "POR_LEGALIZAR",
             "fechaAprobacion": "null",
             "observacion": "null"
@@ -33,7 +37,7 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.datosTabla4 = {
             "id": "4",
             "monto": "15000",
-            "fechaRegistro": "01/12/2017",
+            "actividad": "Transporte",
             "estado": "RECHAZADO",
             "fechaAprobacion": "10/12/2017",
             "observacion": "Observación el porque del rechazo"
@@ -41,7 +45,7 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.datosTabla5 = {
             "id": "5",
             "monto": "20000",
-            "fechaRegistro": "10/01/2018",
+            "actividad": "Servicios públicos",
             "estado": "PAGADO",
             "fechaAprobacion": "18/01/2018",
             "observacion": "null"
@@ -132,6 +136,37 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.ultimosMontosAprobados.push($scope.montoAprobado4);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado5);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado6);
+        
+        function verDetalle(id){
+            if(id === "1"){
+               $scope.mostrarMensaje($scope.datosTabla1); 
+            }
+            if(id === "2"){
+               $scope.mostrarMensaje($scope.datosTabla2); 
+            }
+            if(id === "3"){
+               $scope.mostrarMensaje($scope.datosTabla3); 
+            }
+            if(id === "4"){
+               $scope.mostrarMensaje($scope.datosTabla4); 
+            }
+            if(id === "5"){
+               $scope.mostrarMensaje($scope.datosTabla5); 
+            }
+        };
+        
+        function verMas(){
+            $scope.mostrarMensaje($scope.ultimosMontosAprobados);
+        };
+
+        function mostrarMensaje(row) {
+            console.log(JSON.stringify(row));
+            $('#modalTitulo').html('Detalle');
+            $('#modalTituloDecripcion').html('Información del consolidado');
+            $('#modalTituloContenido').html(JSON.stringify(row));
+            $('#verDetDlg').modal();
+        }
+        ;
 
         $scope.detalleSelected = {};
         $scope.verDetalleConsolidado = function (row) {
@@ -152,6 +187,7 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
             $('#dlgdatail').modal();
         };
     }]);
+
 module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador AnticiposCtrl cargado!!!!");
         $scope.datosFormulario = {};
@@ -167,7 +203,7 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
         $scope.nuevoRegistro = {};
         $scope.id = 1;
 
-        $scope.conceptos = conceptos;
+        $scope.solicitar = solicitar;
         $scope.mostrarMensaje = mostrarMensaje;
         $scope.mostrarTabla = mostrarTabla;
         $scope.mostrarFormulario = mostrarFormulario;
@@ -181,42 +217,100 @@ module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) 
             $('#myModal').modal();
         }
         ;
+        
+        $scope.meses = [
+            {id:"1", nombre:"Enero"},
+            {id:"2", nombre:"Febrero"},
+            {id:"3", nombre:"Marzo"},
+            {id:"4", nombre:"Abril"},
+            {id:"5", nombre:"Mayo"},
+            {id:"6", nombre:"Junio"},
+            {id:"7", nombre:"Julio"},
+            {id:"8", nombre:"Agosto"},
+            {id:"9", nombre:"Septiembre"},
+            {id:"10", nombre:"Octubre"},
+            {id:"11", nombre:"Noviembre"},
+            {id:"12", nombre:"Diciembre"}
+        ];
+        
+        $scope.semanas = [
+            {id:"1", nombre:"1"},
+            {id:"2", nombre:"2"},
+            {id:"3", nombre:"3"},
+            {id:"4", nombre:"4"},
+            {id:"5", nombre:"5"},
+            {id:"6", nombre:"6"},
+            {id:"7", nombre:"7"},
+            {id:"8", nombre:"8"},
+            {id:"9", nombre:"9"},
+            {id:"10", nombre:"10"},
+            {id:"11", nombre:"11"},
+            {id:"12", nombre:"12"}
+        ];
+        
+        $scope.conceptos = [
+            {id:"1", nombre:"Compra"},
+            {id:"2", nombre:"Arriendo"},
+            {id:"3", nombre:"Transporte"},
+            {id:"4", nombre:"Personal"}
+        ];
+
+        $scope.municipios = [
+            {id:"1", nombre:"Cundinamarca"},
+            {id:"2", nombre:"Risaralda"},
+            {id:"3", nombre:"Meta"},
+            {id:"4", nombre:"Valle"}
+        ];
 
         $scope.datos1 = {
             "id": "1",
-            "monto": "1000000",
-            "concepto": "COMPRA",
-            "fechaSolicitud": "20/01/2018",
-            "estado": "Registrado",
-            "legalizado": "1",
-            "observacion": "Solicitud para la compra de ..."
+            "mes":"Enero",
+            "semana":"3",
+            "actividad": "Transporte personal",
+            "concepto": "Transporte",
+            "municipio": "Risaralda",
+            "valor": "1500000",
+            "estado": "2"
         };
 
         $scope.datosTabla.push($scope.datos1);
 
-        function conceptos() {
+        function solicitar() {
             $scope.errores = {};
             var error = false;
+            if (!$scope.datosFormulario.mes) {
+                error = true;
+                $scope.errores.mes = 'Campo obligatorio';
+            }
+            if (!$scope.datosFormulario.semana) {
+                error = true;
+                $scope.errores.semana = 'Campo obligatorio';
+            }
+            if (!$scope.datosFormulario.actividad) {
+                error = true;
+                $scope.errores.actividad = 'Campo obligatorio';
+            }
             if (!$scope.datosFormulario.concepto) {
                 error = true;
                 $scope.errores.concepto = 'Campo obligatorio';
+            }
+            if (!$scope.datosFormulario.municipio) {
+                error = true;
+                $scope.errores.municipio = 'Campo obligatorio';
             }
             if (!$scope.datosFormulario.valor) {
                 error = true;
                 $scope.errores.valor = 'Campo obligatorio';
             }
-            if (!$scope.datosFormulario.observacion) {
-                error = true;
-                $scope.errores.observacion = 'Campo obligatorio';
-            }
             if (!error) {
                 $scope.newsoporte.id = $scope.id + 1;
-                $scope.newsoporte.concepto = $scope.datosFormulario.concepto;
-                $scope.newsoporte.monto = $scope.datosFormulario.valor;
-                $scope.newsoporte.fechaSolicitud = new Date();
-                $scope.newsoporte.observacion = $scope.datosFormulario.observacion;
-                $scope.newsoporte.legalizado = "1";
-                $scope.newsoporte.estado = "Registrado";
+                $scope.newsoporte.mes = $scope.datosFormulario.mes.nombre;
+                $scope.newsoporte.semana = $scope.datosFormulario.semana.nombre;
+                $scope.newsoporte.actividad = $scope.datosFormulario.actividad;
+                $scope.newsoporte.concepto = $scope.datosFormulario.concepto.nombre;
+                $scope.newsoporte.municipio = $scope.datosFormulario.municipio.nombre;
+                $scope.newsoporte.valor = $scope.datosFormulario.valor;
+                $scope.newsoporte.estado = "1";
                 $scope.datosTabla.push($scope.newsoporte);
                 $scope.mostrarMensaje("El registro se guardo de forma exitosa");
                 $scope.newsoporte = {};
@@ -344,3 +438,11 @@ module.controller('LegalizacionUserCtrl', ['$scope', '$http', function ($scope, 
         ;
     }]);
 
+
+module.controller('PerfilUserCtrl', ['$scope', '$http', function ($scope, $http) {
+        console.log("Controlador PerfilUserCtrl cargado!!!!");
+        baseController($scope);
+        $scope.appName();
+        $scope.verPerfil = true;
+        
+}]);
