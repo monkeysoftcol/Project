@@ -133,6 +133,24 @@ module.controller('ConsolidadosCtrl', ['$scope', '$http', function ($scope, $htt
         $scope.ultimosMontosAprobados.push($scope.montoAprobado5);
         $scope.ultimosMontosAprobados.push($scope.montoAprobado6);
 
+        $scope.detalleSelected = {};
+        $scope.verDetalleConsolidado = function (row) {
+            $scope.total = 0;
+            console.log(JSON.stringify(row));
+            $scope.detalleSelected = row;
+            $('#modalTitulo').html('Detalle Consolidado');
+            $('#modalTituloDecripcion').html('Información del consolidado');
+
+            angular.forEach($scope.detalleSelected.detalle, function (value, key) {
+                console.log(value.monto);
+                $scope.sumar(parseInt(value.monto));
+            });
+
+
+            //$('#modalTituloContenido').html(JSON.stringify(row));
+            //$('#dlgProccesing').modal();
+            $('#dlgdatail').modal();
+        };
     }]);
 module.controller('AnticiposCtrl', ['$scope', '$http', function ($scope, $http) {
         console.log("Controlador AnticiposCtrl cargado!!!!");
