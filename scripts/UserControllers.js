@@ -349,6 +349,7 @@ module.controller('LegalizacionUserCtrl', ['$scope', '$http', function ($scope, 
         $scope.datosTabla = [];
         $scope.verFormulario = false;
         $scope.verTabla = true;
+        $scope.valorIva = 0;
         $scope.datosFormulario = {};
         $scope.newsoporte = {};
         //Funciones
@@ -357,6 +358,7 @@ module.controller('LegalizacionUserCtrl', ['$scope', '$http', function ($scope, 
         $scope.mostrarFormulario = mostrarFormulario;
         $scope.mostrarTabla = mostrarTabla;
         $scope.legalizado = legalizado;
+        $scope.registrar = registrar;
 
         $scope.dato1 = {
             "id": "1",
@@ -436,6 +438,39 @@ module.controller('LegalizacionUserCtrl', ['$scope', '$http', function ($scope, 
             $('#legaDlg').modal();
         }
         ;
+        
+        function registrar(){
+            $scope.errores = {};
+            var error = false;
+            if (!$scope.datosFormulario.fechaDocumento) {
+                error = true;
+                $scope.errores.fechaDocumento = 'Campo obligatorio';
+            }
+            if (!$scope.datosFormulario.numeroDocu) {
+                error = true;
+                $scope.errores.numeroDocu = 'Campo obligatorio';
+            }
+            if (!$scope.datosFormulario.identificacion) {
+                error = true;
+                $scope.errores.identificacion = 'Campo obligatorio';
+            }
+            if (!$scope.datosFormulario.razonSocial) {
+                error = true;
+                $scope.errores.razonSocial = 'Campo obligatorio';
+            }
+            if (!$scope.datosFormulario.concepto) {
+                error = true;
+                $scope.errores.concepto = 'Campo obligatorio';
+            }
+            if (!$scope.datosFormulario.valorAntesIva) {
+                error = true;
+                $scope.errores.valorAntesIva = 'Campo obligatorio';
+            }
+            if(!error){
+                $scope.valorIva = $scope.datosFormulario.valorAntesIva * 0.19;
+            }
+        };
+        
     }]);
 
 
