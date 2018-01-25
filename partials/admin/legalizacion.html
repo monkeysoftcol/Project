@@ -64,47 +64,82 @@
         <div class="panel-body">
 
             <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label" >Usuario : </label>
-                        {{detalleSelected.user.name}}
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label" >Email : </label>{{detalleSelected.user.email}}
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label" >Fecha : </label>{{detalleSelected.fecha}}
-                    </div>
-                </div>
+                <div class="col-md-3"><label class="control-label" >Usuario : </label></div>
+                <div class="col-md-3">{{detalleSelected.user.name}}</div>
+                <div class="col-md-3"><label class="control-label" >Email : </label></div>
+                <div class="col-md-3">{{detalleSelected.user.email}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><label class="control-label" >Fecha : </label></div>
+                <div class="col-md-3">{{detalleSelected.fecha}}</div>
+                <div class="col-md-3"><label class="control-label" >Municipio : </label></div>
+                <div class="col-md-3">{{detalleSelected.municipio}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><label class="control-label" >Mes : </label></div>
+                <div class="col-md-3">{{detalleSelected.mes}}</div>
+                <div class="col-md-3"><label class="control-label" >Semana : </label></div>
+                <div class="col-md-3">{{detalleSelected.semana}}</div>
             </div>
             <div class="row">
 
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label" >Monto solicitado : </label>{{detalleSelected.monto|currency}}
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label" >Semana : </label>{{detalleSelected.semana}}
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="control-label" >Justificación : </label>{{detalleSelected.justificacion}}
-                    </div>
-                </div>
+                <div class="col-md-3"><label class="control-label" >Actividad : </label></div>
+                <div class="col-md-3">{{detalleSelected.actividad}}</div>
+                <div class="col-md-3"><label class="control-label" >Justificación : </label></div>
+                <div class="col-md-3">{{detalleSelected.justificacion}}</div>
             </div>
             <div class="row">
+                <div class="col-md-3"><label class="control-label" >Valor sin IVA : </label></div>
+                <div class="col-md-3">{{detalleSelected.monto - 1500|currency}}</div>
+                <div class="col-md-3"><label class="control-label" >IVA : </label></div>
+                <div class="col-md-3">4%</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><label class="control-label" >Total del gasto : </label></div>
+                <div class="col-md-3">{{detalleSelected.monto|currency}}</div>
+                <div class="col-md-3"><label class="control-label" >% Retención : </label></div>
+                <div class="col-md-3">2%</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><label class="control-label" >Valor de la retención : </label></div>
+                <div class="col-md-3">{{2566555|currency}}</div>
+                <div class="col-md-3"><label class="control-label" >% Reteica : </label></div>
+                <div class="col-md-3">3%</div>
+            </div>   
+            <div class="row">
+                <div class="col-md-3"><label class="control-label" >Valor reteica : </label></div>
+                <div class="col-md-3">{{652228|currency}}</div>
+                <div class="col-md-3"><label class="control-label" >Total retenciones : </label></div>
+                <div class="col-md-3">{{788555|currency}}</div>
+            </div> 
+            <div class="row">
+                <div class="col-md-3"><label class="control-label" >Valor legalizado : </label></div>
+                <div class="col-md-3">{{detalleSelected.monto + 585|currency}}</div>
+                <div class="col-md-3"><label class="control-label" >Valor Total legalización : </label></div>
+                <div class="col-md-3">{{detalleSelected.monto + 7542|currency}}</div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3"><label class="control-label" >Aclaraciones : </label></div>
+                <div class="col-md-3">Aclaraciones de test</div>
+                <div class="col-md-3"><label class="control-label" >Saldo : </label></div>
+                <div class="col-md-3">{{detalleSelected.monto - 1252000|currency}}</div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3"><label class="control-label" >Estado : </label></div>
+                <div class="col-md-3">{{detalleSelected.estadop}}</div>
+                <div class="col-md-3"><label class="control-label" >Observaciones : </label></div>
+                <div class="col-md-3">Observaciones</div>
+            </div> 
+
+            <div class="row">
+                <br>
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table cellpadding="1" cellspacing="1" class="table">
                             <thead>
-                                <tr><th colspan="3"><strong>Soportes Anticipo</strong></th></tr>
+                                <tr style="background:#62cb31; color: #FFF "><th colspan="3"><strong>Soportes Anticipo</strong></th></tr>
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
@@ -117,8 +152,8 @@
                                     <td>{{soporte.nombre}}</td>
                                     <td>
                                         <a class="btn btn-default">
-                                                    <i class="fa fa-download"></i>
-                                                </a>
+                                            <i class="fa fa-download"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -133,7 +168,7 @@
 
                         <table cellpadding="1" cellspacing="1" class="table">
                             <thead>
-                                <tr><th colspan="3"><strong>Soportes legalización del anticipo</strong></th></tr>
+                                <tr style="background:#62cb31; color: #FFF "><th colspan="5"><strong>Soportes legalización del anticipo</strong></th></tr>
                                 <tr>
                                     <th>Id</th>
                                     <th>Fecha</th>

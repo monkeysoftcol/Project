@@ -149,7 +149,7 @@
 </div>
 
 <div class="modal fade" id="dlgdatail" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="color-line"></div>
             <div class="modal-header text-center">
@@ -177,24 +177,32 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Mes</th>
+                                    <th>Semana</th>
+                                    <th>Actividad</th>
+                                    <th>Concepto</th>
+                                    <th>Municipio</th>
                                     <th>Fecha</th>
                                     <th>Estado</th>
-                                    <th>Semana</th>
                                     <th>Monto</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="info in detalleSelected.detalle">
                                     <td>{{$index+1}}</td>
+                                    <td>{{info.mes}}</td>
+                                    <td>{{info.semana}}</td>
+                                    <td>{{info.actividad}}</td>
+                                    <td>{{info.justificacion}}</td>
+                                    <td>{{info.municipio}}</td>
                                     <td>{{info.fecha}}</td>
                                     <td>{{info.estadop}}</td>
-                                    <td>{{info.semana}}</td>
                                     <td class="">{{info.monto | currency}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="4" class="text-right"><strong>Total :</strong></td>
+                                    <td colspan="8" class="text-right"><strong>Total :</strong></td>
                                     <td>{{total | currency}}</td>
                                 </tr>
                             </tfoot>
